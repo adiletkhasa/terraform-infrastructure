@@ -32,6 +32,8 @@ resource "google_container_cluster" "primary" {
   remove_default_node_pool = false
   node_version             = data.google_container_engine_versions.us-central1-c.latest_node_version
   initial_node_count       = var.gke_config["node_count"]
+  deletion_protection = false
+
   node_config {
     disk_size_gb = 20
   }
