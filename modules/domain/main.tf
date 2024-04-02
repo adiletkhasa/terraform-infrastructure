@@ -1,5 +1,5 @@
 resource "google_dns_managed_zone" "project" {
-  name     = "hosted-zone"
+  name     = "you-domain-name"
   dns_name = "${var.google_domain_name}."
 }
 

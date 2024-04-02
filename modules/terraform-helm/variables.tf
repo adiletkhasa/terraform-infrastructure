@@ -5,7 +5,7 @@ variable "deployment_name" {
 
 variable "deployment_namespace" {
   type        = string
-  default     = "default"
+  default     = "new-namespace"
   description = "- (Optional) Namespace where to deploy resources to."
 }
 
