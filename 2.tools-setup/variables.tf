@@ -9,7 +9,7 @@ variable "email" {}
 variable "BUCKET_NAME" {}
 
 
-# This block is used to setup ingress controller
+# variable configurations for argocd helm chart deployment
 variable "argo-config" {
   type        = map(any)
   description = "Please define prometheus configurations"
@@ -17,5 +17,16 @@ variable "argo-config" {
     deployment_name = "argo"
     chart_version   = "5.20.5"
 
+  }
+}
+
+# variable configurations for Ingress-Controller helm chart deployment
+variable "ingress-controller-config" {
+  type        = map(any)
+  description = "Please define prometheus configurations"
+  default = {
+    deployment_name          = "ingress-controller"
+    chart_version            = "4.3.0"
+    loadBalancerSourceRanges = "0.0.0.0/0"
   }
 }
