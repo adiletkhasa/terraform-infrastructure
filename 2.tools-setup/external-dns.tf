@@ -1,6 +1,6 @@
-module "" {
+module "external-dns-terraform-k8s-namespace" {
   source = "../modules/terraform-k8s-namespace/"
-  name   = ""
+  name   = "external-dns"
 }
 
 resource "google_service_account" "service_account" {
