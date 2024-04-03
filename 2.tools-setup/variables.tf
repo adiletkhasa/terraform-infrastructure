@@ -30,3 +30,13 @@ variable "ingress-controller-config" {
     loadBalancerSourceRanges = "0.0.0.0/0"
   }
 }
+
+# variable configurations for Ingress-Controller helm chart deployment
+variable "external-dns-config" {
+  type        = map(any)
+  description = "Please define prometheus configurations"
+  default = {
+    deployment_name          = "external-dns"
+    chart_version            = "6.11.3"
+  }
+}
