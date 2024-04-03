@@ -3,7 +3,7 @@ module "external-dns-terraform-k8s-namespace" {
   name   = "external-dns"
 }
 
-resource "google_service_account" "service_account" {
+resource "google_service_account" "external-dns" {
   account_id   = "project-external-dns"
   display_name = "Service Account"
   project      = var.PROJECT_ID
