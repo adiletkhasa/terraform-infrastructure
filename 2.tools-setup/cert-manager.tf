@@ -23,6 +23,9 @@ EOF
 
 
 module "lets-encrypt-terraform-helm" {
+    depends_on = [
+    module.cert-manager-terraform-helm
+  ]
   source               = "../modules/terraform-helm-local/"
   deployment_name      = "lets-encrypt"
   deployment_namespace = module.cert-manager-terraform-k8s-namespace.namespace
