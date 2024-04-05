@@ -20,3 +20,15 @@ podDnsConfig:
 installCRDs: true
 EOF
 }
+
+
+module "lets-encrypt-terraform-helm" {
+  source    = "../modules/terraform-helm-local/"
+  name      = ""
+  namespace = var.deployment_namespace
+  chart     = var.deployment_path
+  wait      = false
+  values = [
+    var.values_yaml
+  ]
+}
