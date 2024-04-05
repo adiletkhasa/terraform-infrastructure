@@ -23,12 +23,14 @@ EOF
 
 
 module "lets-encrypt-terraform-helm" {
-  source    = "../modules/terraform-helm-local/"
-  name      = ""
-  namespace = var.deployment_namespace
-  chart     = var.deployment_path
-  wait      = false
-  values = [
-    var.values_yaml
-  ]
+  source               = "../modules/terraform-helm-local/"
+  deployment_name      = "lets-encrypt"
+  deployment_namespace = module.cert-manager-terraform-k8s-namespace.namespace
+  deployment_path      = "./charts/lets-encrypt"
+  values_yaml          = <<EOF
+
+email: "${var.email}"
+server: https://acme-v02.api.letsencrypt.org/directory
+env: dev
+  EOF
 }
