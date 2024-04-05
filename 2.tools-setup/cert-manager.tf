@@ -34,6 +34,5 @@ module "lets-encrypt-terraform-helm" {
 
 email: "${var.email}"
 server: https://acme-v02.api.letsencrypt.org/directory
-env: dev
   EOF
 }

@@ -2,13 +2,13 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-"{{ .Values.env }}"
+  name: letsencrypt-dev
 spec:
   acme:
     server: "{{ .Values.server }}"
     email: "{{ .Values.email }}"
     privateKeySecretRef:
-      name: letsencrypt-"{{ .Values.env }}"
+      name: letsencrypt-dev
     solvers:
       - http01:
           ingress:
