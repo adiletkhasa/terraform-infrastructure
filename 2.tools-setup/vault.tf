@@ -16,10 +16,10 @@ server:
       enabled: true
       annotations: 
         ingress.kubernetes.io/ssl-redirect: "false"
-        kubernetes.io/ingress.class: nginx
         acme.cert-manager.io/http01-edit-in-place: "true"
         cert-manager.io/cluster-issuer: letsencrypt-dev
         nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      ingressClassName: "nginx"
       hosts:
       - host: "dev-vault.${var.google_domain_name}"
         http:
