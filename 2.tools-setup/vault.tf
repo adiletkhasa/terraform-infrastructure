@@ -23,14 +23,14 @@ server:
       hosts:
       - host: "dev-vault.${var.google_domain_name}"
         http:
-        paths: 
-        - pathType: Prefix
-          path: "/"
-          backend:
-            service:
-              name: vault
-              port:
-                number: 8200
+          paths: 
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: vault
+                port:
+                  number: 8200
       tls:
        - secretName: vault-tls
          hosts:
