@@ -22,6 +22,7 @@ server:
         nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       hosts:
       - host: "dev-vault.${var.google_domain_name}"
+        http:
         paths: 
         - pathType: Prefix
           path: "/"
