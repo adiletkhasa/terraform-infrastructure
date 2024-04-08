@@ -50,3 +50,14 @@ variable "cert-manager-config" {
     chart_version            = "1.10.0"
   }
 }
+
+# variable configurations for Hashicorp Vault helm chart deployment
+
+variable "vault-config" {
+  type        = map(any)
+  description = "Please define vault helm chart version, and deployment_name "
+  default = {
+    deployment_name          = "vault"
+    chart_version            = "0.22.1"
+  }
+}
