@@ -1,6 +1,6 @@
 module "prometheus-terraform-k8s-namespace" {
   source = "../modules/terraform-k8s-namespace/"
-  name   = "cert-manager"
+  name   = "prometheus"
 }
 
 
@@ -18,16 +18,16 @@ server:
   ingress:
     enabled: true
   annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    ingress.kubernetes.io/ssl-redirect: "false"
-    cert-manager.io/cluster-issuer: letsencrypt-dev
-    acme.cert-manager.io/http01-edit-in-place: "true"
-  hosts: 
+      ingress.kubernetes.io/ssl-redirect: "false"
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt-dev
+      acme.cert-manager.io/http01-edit-in-place: "true"
+    hosts: 
       - "prometheus.${var.google_domain_name}"
-  tls: 
+    tls:
       - secretName: prometheus-server-tls
         hosts:
           - "prometheus.${var.google_domain_name}"
-          
+
 EOF
 }
