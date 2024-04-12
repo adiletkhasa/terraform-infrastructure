@@ -16,7 +16,7 @@ module "prometheus-terraform-helm" {
 server:
   ingress:
     enabled: true
-  annotations:
+    annotations:
       ingress.kubernetes.io/ssl-redirect: "false"
       kubernetes.io/ingress.class: nginx
       cert-manager.io/cluster-issuer: letsencrypt-dev
