@@ -1,2 +1,4 @@
 0.account_setup/configurations.tfvars
 workspace**
+
+vault-token.txt
