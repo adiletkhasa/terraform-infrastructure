@@ -10,5 +10,5 @@ provider "helm" {
 
 provider "vault" {
     address = "https://dev-vault.adilet-khasanov.net/"
-    token = "your-vault-token"
+    token = "${path.module}/vault_token.txt"
 }
