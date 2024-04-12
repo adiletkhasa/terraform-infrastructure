@@ -33,3 +33,25 @@ server:
     https: true
   EOF
 }
+
+
+data "kubernetes_secret" "example" {
+    depends_on = [
+    module.argo-terraform-helm
+  ]
+  metadata {
+    name = "argocd-initial-admin-secret"
+    namespace = "argo"
+  }
+}
+
+resource "vault_generic_secret" "argo-user" {
+  path = "company_passwords/dev/argocd/argocd_admin"
+
+  data_json = <<EOT
+{
+  "username":   "admin",
+  "password": "${data.kubernetes_secret.example.data["password"]}"
+}
+EOT
+}
