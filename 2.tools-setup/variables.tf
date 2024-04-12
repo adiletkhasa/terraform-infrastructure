@@ -72,3 +72,15 @@ variable "prometheus-config" {
 
   }
 }
+
+# variable configurations for argocd helm chart deployment
+variable "grafana-config" {
+  type        = map(any)
+  description = "Please define prometheus configurations"
+  default = {
+    deployment_name = "grafana"
+    chart_version   = "6.43.3"
+    adminUser       = "admin"
+    adminPassword   = "password"
+  }
+}
