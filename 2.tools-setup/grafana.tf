@@ -46,8 +46,8 @@ ingress:
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-    acme.cert-manager.io/http01-edit-in-place: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-dev
+    acme.cert-manager.io/http01-edit-in-place: "false"
   path: /
   hosts:
     - "grafana.${var.google_domain_name}"
@@ -70,4 +70,15 @@ datasources:
      access: proxy
      isDefault: true
 EOF
+}
+
+resource "vault_generic_secret" "grafana" {
+  path = "company_passwords/dev/grafana/admin-Grafana-user"
+
+  data_json = <<EOT
+{
+  "username":   "${var.grafana-config["adminUser"]}",
+  "password": "${var.grafana-config["adminPassword"]}"
+}
+EOT
 }
