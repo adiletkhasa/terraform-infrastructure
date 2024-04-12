@@ -14,7 +14,6 @@ module "prometheus-terraform-helm" {
   values_yaml          = <<EOF
 
 server:
-  enabled: true
   ingress:
     enabled: true
   annotations:
