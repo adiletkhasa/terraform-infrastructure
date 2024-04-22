@@ -3,6 +3,6 @@ variable artifact-config {
   description = "configurations for Artifact repo"
   default     = {
     location      = "us-central1"
-    repository_id = "docker_registry"
+    repository_id = "docker-registry"
   }
 }
