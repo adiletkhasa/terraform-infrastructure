@@ -23,7 +23,7 @@ EOF
 
 
 module "lets-encrypt-terraform-helm" {
-    depends_on = [
+  depends_on = [
     module.cert-manager-terraform-helm
   ]
   source               = "../modules/terraform-helm-local/"

@@ -1,4 +1,4 @@
-variable google_domain_name {
+variable "google_domain_name" {
   type        = string
   default     = ""
   description = "domain name"
@@ -36,8 +36,8 @@ variable "external-dns-config" {
   type        = map(any)
   description = "Please define prometheus configurations"
   default = {
-    deployment_name          = "external-dns"
-    chart_version            = "6.11.3"
+    deployment_name = "external-dns"
+    chart_version   = "6.11.3"
   }
 }
 
@@ -46,8 +46,8 @@ variable "cert-manager-config" {
   type        = map(any)
   description = "Please define cert-manager helm chart version, and deployment_name "
   default = {
-    deployment_name          = "cert-manager"
-    chart_version            = "1.10.0"
+    deployment_name = "cert-manager"
+    chart_version   = "1.10.0"
   }
 }
 
@@ -57,8 +57,8 @@ variable "vault-config" {
   type        = map(any)
   description = "Please define vault helm chart version, and deployment_name "
   default = {
-    deployment_name          = "vault"
-    chart_version            = "0.22.1"
+    deployment_name = "vault"
+    chart_version   = "0.22.1"
   }
 }
 

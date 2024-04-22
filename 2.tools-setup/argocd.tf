@@ -36,11 +36,11 @@ server:
 
 
 data "kubernetes_secret" "example" {
-    depends_on = [
+  depends_on = [
     module.argo-terraform-helm
   ]
   metadata {
-    name = "argocd-initial-admin-secret"
+    name      = "argocd-initial-admin-secret"
     namespace = "argo"
   }
 }
