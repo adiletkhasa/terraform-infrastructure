@@ -106,6 +106,6 @@ variable "cluster-autoscaler-config" {
   description = " cluster autoscaler configurations"
   default     = {
     deployment_name = "cluster-autoscaler"
-    chart_version   = "9.21.0"
+    chart_version   = "9.36.0"
   }
 }
