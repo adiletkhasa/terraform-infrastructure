@@ -15,7 +15,7 @@ image:
   repository: us-central1-docker.pkg.dev/terraform-project-akhasa1/docker-registry/simple-website
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "4.0.0"
+  tag: "10.0.0"
 
 service:
   type: ClusterIP
