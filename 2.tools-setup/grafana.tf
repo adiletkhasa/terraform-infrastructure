@@ -71,14 +71,3 @@ datasources:
      isDefault: true
 EOF
 }
-
-resource "vault_generic_secret" "grafana" {
-  path = "company_passwords/dev/grafana/admin-Grafana-user"
-
-  data_json = <<EOT
-{
-  "username":   "${var.grafana-config["adminUser"]}",
-  "password": "${var.grafana-config["adminPassword"]}"
-}
-EOT
-}

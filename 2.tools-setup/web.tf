@@ -1,25 +1,25 @@
-module "ecom-terraform-k8s-namespace" {
+module "web-terraform-k8s-namespace" {
   source = "../modules/terraform-k8s-namespace/"
-  name   = "ecom"
+  name   = "web"
 }
 
 
-module "ecom-terraform-helm" {
+module "api-terraform-helm" {
   source               = "../modules/terraform-helm-local/"
-  deployment_name      = "ecom"
-  deployment_namespace = module.ecom-terraform-k8s-namespace.namespace
-  deployment_path      = "./charts/ecom"
+  deployment_name      = "api"
+  deployment_namespace = module.web-terraform-k8s-namespace.namespace
+  deployment_path      = "./charts/web"
   values_yaml          = <<EOF
 
 image:
-  repository: us-central1-docker.pkg.dev/terraform-project-akhasa1/docker-registry/simple-website
+  repository: us-central1-docker.pkg.dev/woven-surface-428821-q5/docker-registry/api
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "10.0.0"
+  tag: "latest"
 
 service:
   type: ClusterIP
-  port: 5000
+  port: 3000
 
 ingress:
   enabled: true
@@ -30,14 +30,14 @@ ingress:
     acme.cert-manager.io/http01-edit-in-place: "true"
     timestamp: "{{ now | quote }}"
   hosts:
-    - host: "uat-ecom.${var.google_domain_name}"
+    - host: "api.${var.google_domain_name}"
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
    - secretName: chart-example-tls
      hosts:
-       - "uat-ecom.${var.google_domain_name}"
+       - "api.${var.google_domain_name}"
 
   EOF
 }
