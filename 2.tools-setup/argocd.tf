@@ -45,13 +45,13 @@ data "kubernetes_secret" "example" {
   }
 }
 
-resource "vault_generic_secret" "argo-user" {
-  path = "company_passwords/dev/argocd/argocd_admin"
+# resource "vault_generic_secret" "argo-user" {
+#   path = "company_passwords/dev/argocd/argocd_admin"
 
-  data_json = <<EOT
-{
-  "username":   "admin",
-  "password": "${data.kubernetes_secret.example.data["password"]}"
-}
-EOT
-}
+#   data_json = <<EOT
+# {
+#   "username":   "admin",
+#   "password": "${data.kubernetes_secret.example.data["password"]}"
+# }
+# EOT
+# }
